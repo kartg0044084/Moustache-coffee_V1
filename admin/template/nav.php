@@ -28,14 +28,14 @@
                   <?php } ?>
           </ul>
             </li>
-            <li class="active">
-              <a href="#">最新消息管理</a>
+            <li>
+              <a href="../news/list.php">最新消息管理</a>
             </li>
             <li>
-              <a href="#">產品管理</a>
+              <a href="../product_category/list.php">產品管理</a>
             </li>
             <li >
-              <a href="#">產品分類管理</a>
+              <a href="../product_category/list.php">產品分類管理</a>
               </li>
             <li>
               <a href="#">訂單管理</a>

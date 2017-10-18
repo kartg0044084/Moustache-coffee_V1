@@ -1,4 +1,4 @@
-<?php 
+<?php
 require_once('../../connection/database.php');
 
  // 圖片上傳語法
@@ -47,44 +47,7 @@ $product = $sth->fetch(PDO::FETCH_ASSOC);
     <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="..\css\admin.css" rel="stylesheet" type="text/css">
   </head><body>
-    <div class="navbar navbar-default navbar-static-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Sweet House</a>
-        </div>
-        <div class="collapse navbar-collapse" id="navbar-ex-collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li>
-              <a href="#">頁面管理</a>
-            </li>
-            <li>
-              <a href="#">最新消息管理</a>
-            </li>
-            <li class="active">
-              <a href="#">產品管理</a>
-            </li>
-            <li >
-              <a href="#">產品分類管理</a>
-              </li>
-            <li>
-              <a href="#">訂單管理</a>
-            </li>
-            <li>
-              <a href="#">會員管理</a>
-            </li>
-            <li>
-              <a href="#">登出</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
+      <?php include_once('../template/nav.php'); ?>
     <div class="section">
       <div class="container">
         <div class="row">

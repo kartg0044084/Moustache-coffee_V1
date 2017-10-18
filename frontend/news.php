@@ -35,6 +35,7 @@ $totalRows = count($news);
 							<div>
 								<h1><?php echo $row['title'] ?></h1>
 								<span><?php echo $row['publishedDate'] ?></span>
+								<!-- echo mb_substr函式 宣告字串0~100結束 顯示 -->
 								<p><?php echo mb_substr( $row['content'],0,100,"utf-8")."..."; ?></p>
 								<a href="singlepost.php?newsID=<?php echo $row['newsID'];?>" class="more">Read More</a>
 							</div>
