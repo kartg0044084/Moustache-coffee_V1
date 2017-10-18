@@ -1,4 +1,4 @@
-<?php 
+<?php
 require_once('../template/login_check.php');
 require_once('../../connection/database.php');
 $limit=2;
