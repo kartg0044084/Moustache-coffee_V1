@@ -1,7 +1,10 @@
 <?php
 require_once('../connection/database.php');
-$sth=$db->query("SELECT*FROM page WHERE pageID= 1");
-$page=$sth->fetch(PDO::FETCH_ASSOC);
+$sth=$db->query("SELECT*FROM page");
+$pages=$sth->fetchAll(PDO::FETCH_ASSOC);
+
+$sth2=$db->query("SELECT * FROM page WHERE pageID=".$_GET['pageID']."");
+$page=$sth2->fetchAll(PDO::FETCH_ASSOC);
  ?>﻿
 <!doctype html>
 <!-- Website template by freewebsitetemplates.com -->
@@ -27,11 +30,16 @@ $page=$sth->fetch(PDO::FETCH_ASSOC);
 				<div class="sidebar">
 
 					<p>
-						<a href="about.php" style="text-decoration:none;"><?php echo $page['title']; ?></a>
+            <?php foreach($pages as $row){ ?>
+						<a href="about.php?pageID=<?php echo $row['pageID']; ?>" style="text-decoration:none;">
+              <?php echo $row['title']; ?></a>
+          <?php } ?>
 					</p>
 								</div>
 				<div class="article">
-					<?php echo $page['content']; ?>
+          <?php foreach($page as $row){ ?>
+					<?php echo $row['content']; ?>
+        <?php } ?>
 				</div>
 			</div>
 		</div>

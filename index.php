@@ -31,7 +31,7 @@
 		        <a href="index.php">首頁</a>
 		      </li>
 		      <li class="menu">
-		        <a href="frontend/about.php?PageID=1">關於我們</a>
+		        <a href="frontend/about.php?pageID=1">關於我們</a>
 		        <ul class="primary">
 		          <li>
 		            <a href="frontend/about.php?PageID=2">購物須知</a>

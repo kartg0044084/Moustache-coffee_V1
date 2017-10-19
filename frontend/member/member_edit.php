@@ -1,6 +1,25 @@
 
 <?php
+session_start();
 require_once('../../connection/database.php');
+if(isset($_POST['MM_update']) && $_POST['MM_update'] == "UPDATE"){
+  $sql= "UPDATE member SET account =:account,
+            name = :name,
+            phone = :phone,
+            address = :address WHERE memberID=:memberID";
+  $sth = $db ->prepare($sql);
+
+  $sth ->bindParam(":account", $_POST['account'], PDO::PARAM_STR);
+  $sth ->bindParam(":name", $_POST['name'], PDO::PARAM_STR);
+  $sth ->bindParam(":phone", $_POST['phone'], PDO::PARAM_INT);
+  $sth ->bindParam(":address", $_POST['address'], PDO::PARAM_STR);
+  $sth ->bindParam(":memberID", $_POST['memberID'], PDO::PARAM_INT);
+  $sth -> execute();
+
+  header('Location: member_edit.php');
+}
+$sth2=$db->query("SELECT*FROM member");
+$member=$sth2->fetch(PDO::FETCH_ASSOC);
  ?>
 
 <!doctype html>
@@ -32,18 +51,17 @@ require_once('../../connection/database.php');
 				</ul>
 				<div id="MemberForm">
 					<h1>會員資料修改</h1>
-					<form action="member_edit.php" method="post">
-						<input type="hidden" name="MM_update" value="EditForm">
+					<form data-toggle="validator" action="member_edit.php" method="post">
 
 						<table>
 								<tr>
 									<th>帳號：</th>
-									<td>andy@gmail.com</td>
+									<td><input type="text" id="account" name="account" value="<?php echo $member['account']?>"></td>
 								</tr>
 								<tr>
 									<th>姓名：</th>
 									<td>
-										<input type="text" name="Name" value="Andy">
+										<input type="text" id="name" name="name" value="<?php echo $member['name']?>">
 										<div class="help-block with-errors"></div>
 									</td>
 								</tr>
@@ -60,17 +78,20 @@ require_once('../../connection/database.php');
 								</tr>
 								<tr>
 									<th>聯絡電話：</th>
-									<td><input type="text" name="Phone"></td>
+									<td><input type="text" id="phone" name="phone" value="<?php echo $member['phone']?>"></td>
 								</tr>
 								<tr>
 									<th>行動電話：</th>
-									<td><input type="text" name="MobilePhone"></td>
+									<td><input type="text"  name="mobilephone" ></td>
 								</tr>
 								<tr>
 									<th>地址：</th>
-									<td><input type="text" name="Address"></td>
+									<td><input type="text" id="address" name="address" value="<?php echo $member['address']?>"></td>
 								</tr>
 								<tr>
+                  <input type="hidden" name="memberID" value="<?php echo $member['memberID']; ?>">
+                  <!-- 隱藏表單 透過 memberID 更新(由上往下跑) 完成更新 -->
+                  <input type="hidden" name="MM_update" value="UPDATE">
 									<td colspan="2" align="center"><input type="submit" value="更新資料" id="submit" ></td>
 								</tr>
 						</table>

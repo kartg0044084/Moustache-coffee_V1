@@ -94,7 +94,7 @@ $news=$sth->fetch(PDO::FETCH_ASSOC);
                   <div class="help-block"></div>
                 </div>
               </div>
-              
+
               <div class="form-group">
                 <div class="col-sm-2">
                   <label for="title" class="control-label">標題</label>
@@ -115,6 +115,7 @@ $news=$sth->fetch(PDO::FETCH_ASSOC);
               <div class="form-group">
                 <div class="col-sm-10 col-sm-offset-2 text-right">
                   <input type="hidden" name="newsID" value="<?php echo $news['newsID']; ?>">
+                  <!-- 隱藏表單 透過 newsID 更新(由上往下跑) 完成更新 -->
                    <input type="hidden" name="MM_update" value="UPDATE"> <!--form表單隱藏欄位-->
                    <input type="text" name="createdDate" value="<?php echo date('Y-m-d H:i:s'); ?>">
                   <button type="submit" class="btn btn-primary">送出</button>
