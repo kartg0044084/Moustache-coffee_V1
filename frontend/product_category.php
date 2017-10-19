@@ -43,8 +43,8 @@ $all_product=$sth2->fetchAll(PDO::FETCH_ASSOC);
 
 					<li>
 						<?php foreach($all_product as $row){ ?>
-						<a href="product_content.php"><img src="../uploads/products/<?php echo $row['picture'];?>" width="200" height="150" alt=""></a>
-						<a href="product_content.php"><h2><?php echo $row['name']; ?></h2></a>
+						<a href="product_content.php?productID=<?php echo $row['productID']; ?>"><img src="../uploads/products/<?php echo $row['picture'];?>" width="200" height="150" alt=""></a>
+						<a href="product_content.php?productID=<?php echo $row['productID']; ?>"><h2><?php echo $row['name']; ?></h2></a>
 						<?php } ?>
 					</li>
 

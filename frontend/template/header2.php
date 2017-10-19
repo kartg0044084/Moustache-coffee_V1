@@ -13,7 +13,7 @@
 </div>
 <div id="header">
   <div class="container">
-    <a href="index.php" class="logo"><img src="../assets/images/logo.png" alt=""></a>
+    <a href="index.php" class="logo"><img src="../../assets/images/logo.png" alt=""></a>
 
     <ul id="navigation">
       <li class="selected">
@@ -34,7 +34,7 @@
         <a href="../product_no_category.php">產品介紹</a>
       </li>
       <li class="menu">
-        <a href="../news_list.php">最新消息</a>
+        <a href="../news.php">最新消息</a>
       </li>
       <li>
         <a href="../contact.php">聯絡我們</a>

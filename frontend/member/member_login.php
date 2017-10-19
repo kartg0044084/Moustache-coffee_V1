@@ -30,19 +30,19 @@ require_once('../../connection/database.php');
 					<form action="#" method="post" data-toggle="validator">
 						<div class="form-group">
 							<div class="col-sm-2">
-								<label for="Account" class="control-label">帳號</label>
+								<label for="account" class="control-label">帳號</label>
 							</div>
 							<div class="col-sm-10">
-								<input type="email" class="form-control" id="Account" name="Account"  style="margin-bottom:10px;" data-error="請輸入帳號" required>
+								<input type="email" class="form-control" id="account" name="account"  style="margin-bottom:10px;" data-error="請輸入帳號" required>
 								<div class="help-block with-errors"></div>
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="col-sm-2">
-								<label for="Password" class="control-label">密碼</label>
+								<label for="password" class="control-label">密碼</label>
 							</div>
 							<div class="col-sm-10">
-								<input type="password" class="form-control" id="Password" name="Password" data-minlength="6" data-error="請輸入密碼" required>
+								<input type="password" class="form-control" id="password" name="password" data-minlength="6" data-error="請輸入密碼" required>
 								<div class="help-block with-errors"></div>
 							</div>
 						</div>

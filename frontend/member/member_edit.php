@@ -1,4 +1,25 @@
 
+<?php
+require_once('../../connection/database.php');
+if(isset($_POST['MM_update']) && $_POST['MM_update'] == "UPDATE"){
+  $sql= "UPDATE member SET account =:account,
+            	password = :	password,
+            	phone = :	phone, WHERE memberID=:memberID";
+  $sth = $db ->prepare($sql);
+
+  $sth ->bindParam(":account", $_POST['account'], PDO::PARAM_STR);
+  $sth ->bindParam(":password", $_POST['password'], PDO::PARAM_STR);
+  $sth ->bindParam(":phone", $_POST['phone'], PDO::PARAM_STR);
+  $sth ->bindParam(":memberID", $_POST['memberID'], PDO::PARAM_STR);
+  $sth -> execute();
+
+  header('Location: list.php');
+}
+
+$sth=$db->query("SELECT*FROM member WHERE memberID=".$_GET['memberID']);
+$news=$sth->fetch(PDO::FETCH_ASSOC);
+ ?>
+
 <!doctype html>
 <!-- Website ../template by freewebsite../templates.com -->
 <html>

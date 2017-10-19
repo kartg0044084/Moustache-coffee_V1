@@ -19,7 +19,7 @@
 			<div class="body">
 				<div>
 					<div>
-						<img src="../images/check-in.png" alt="">
+						
 						<h1>UNIT 0123 , ABC BUILDING, BUSSINESS PARK</h1>
 						<p>If you're having problems editing this website template, then don't hesitate to ask for help on the Forums.</p>
 					</div>

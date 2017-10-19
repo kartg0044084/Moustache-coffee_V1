@@ -22,7 +22,6 @@ $page=$sth->fetch(PDO::FETCH_ASSOC);
 				</div>
 			</div>
 			<div class="body">
-				<img src="../images/bg-header-about.jpg" alt="">
 			</div>
 			<div class="footer">
 				<div class="sidebar">
