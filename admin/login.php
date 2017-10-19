@@ -42,7 +42,7 @@ $(document).ready(function() {
 	$(".username").blur(function() {
 		$(".user-icon").css("left","0px");
 	});
-	
+
 	$(".password").focus(function() {
 		$(".pass-icon").css("left","-48px");
 	});
@@ -72,7 +72,7 @@ $(document).ready(function() {
     <!--DESCRIPTION--><span>後台管理系統</span><!--END DESCRIPTION-->
     </div>
     <!--END HEADER-->
-	
+
 	<!--CONTENT-->
     <div class="content">
 	<!--USERNAME--><input name="account" id="account" type="text" class="input username" value="Username" onfocus="this.value=''" /><!--END USERNAME-->

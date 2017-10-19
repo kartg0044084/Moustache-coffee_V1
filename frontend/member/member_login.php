@@ -27,7 +27,7 @@ require_once('../../connection/database.php');
 					<h1>會員登入</h1>
 					<div class="row">
 	          <div class="col-md-12">
-					<form action="#" method="post" data-toggle="validator">
+					<form action="login.php" method="post" data-toggle="validator">
 						<div class="form-group">
 							<div class="col-sm-2">
 								<label for="account" class="control-label">帳號</label>
