@@ -1,4 +1,13 @@
-
+<?php
+require_once('../../connection/database.php');
+  $sql= "INSERT INTO member(account, password, createdDate, phone) VALUES ( :account, :password, :createdDate, :phone)";
+  $sth = $db ->prepare($sql);
+  $sth ->bindParam(":account", $_POST['account'], PDO::PARAM_STR);
+  $sth ->bindParam(":password", $_POST['password'], PDO::PARAM_STR);
+  $sth ->bindParam(":createdDate", $_POST['createdDate'], PDO::PARAM_STR);
+	$sth ->bindParam(":phone", $_POST['phone'], PDO::PARAM_STR);
+  $sth -> execute();
+ ?>
 <!doctype html>
 <!-- Website ../template by freewebsite../templates.com -->
 <html>
@@ -10,7 +19,7 @@
 </head>
 <body>
 	<div id="page">
-		<?php require_once("../template/header.php"); ?>
+		<?php require_once("../template/header2.php"); ?>
 		<div id="body" class="contact">
 			<div class="header">
 				<div>

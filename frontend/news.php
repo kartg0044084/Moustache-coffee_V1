@@ -1,12 +1,14 @@
 <?php
 require_once('../connection/database.php');
-$limit=2;
+$limit=4;
 // 判斷目前第幾頁，若沒有page參數就預設為1
 if (isset($_GET["page"])) {$page = $_GET["page"]; } else {$page=1; };
 // 計算要從第幾筆開始
 $start_from = ($page-1) * $limit;
 $sth=$db->query("SELECT*FROM news ORDER BY publishedDate DESC LIMIT ".$start_from.",". $limit);
 $news=$sth->fetchAll(PDO::FETCH_ASSOC);
+$sth2=$db->query("SELECT*FROM news ORDER BY publishedDate DESC");
+$latest_news=$sth2->fetch(PDO::FETCH_ASSOC);
 $totalRows = count($news);
  ?>
 <!doctype html>
@@ -45,12 +47,11 @@ $totalRows = count($news);
 					<a href="news.php" class="load">Load More</a>
 				</div>
 				<div class="sidebar">
-					<h1>Recent Posts</h1>
-					<img src="../images/on-diet.png" alt="">
-					<h2>ON THE DIET</h2>
-					<span>By Admin on November 28, 2023</span>
-					<p>You can replace all this text with your own text. You can remove any link to our website from this website template.</p>
-					<a href="singlepost.php" class="more">Read More</a>
+          <h1>最新消息</h1>
+					<h2><?php echo $latest_news['title'] ?></h2>
+					<span><?php echo $latest_news['publishedDate'] ?></span>
+					<p><?php echo $latest_news['content'] ?></p>
+					<a href="singlepost.php?newsID=<?php echo $latest_news['newsID'];?>" class="more">Read More</a>
 				</div>
 				<?php  if($totalRows > 0){
             $sth = $db->query("SELECT * FROM news ORDER BY PublishedDate DESC ");

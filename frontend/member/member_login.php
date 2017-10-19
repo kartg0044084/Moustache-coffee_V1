@@ -1,3 +1,6 @@
+<?php
+require_once('../../connection/database.php');
+ ?>
 <!doctype html>
 <!-- Website ../template by freewebsite../templates.com -->
 <html>
@@ -9,7 +12,7 @@
 </head>
 <body>
 	<div id="page">
-		<?php require_once("../template/header.php"); ?>
+		<?php require_once("../template/header2.php"); ?>
 		<div id="body" class="contact">
 			<div class="header">
 				<div>

@@ -1,4 +1,8 @@
-﻿
+<?php
+require_once('../connection/database.php');
+$sth=$db->query("SELECT*FROM page WHERE pageID= 1");
+$page=$sth->fetch(PDO::FETCH_ASSOC);
+ ?>﻿
 <!doctype html>
 <!-- Website template by freewebsitetemplates.com -->
 <html>
@@ -24,11 +28,11 @@
 				<div class="sidebar">
 
 					<p>
-						<a href="about.php" style="text-decoration:none;">頁面標題</a>
+						<a href="about.php" style="text-decoration:none;"><?php echo $page['title']; ?></a>
 					</p>
 								</div>
 				<div class="article">
-					關於我們內容
+					<?php echo $page['content']; ?>
 				</div>
 			</div>
 		</div>
