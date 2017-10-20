@@ -4,6 +4,9 @@ require_once('../connection/database.php');
 $sth=$db->query("SELECT * FROM product_category WHERE product_categoryID=".$_GET['product_categoryID']." ORDER BY createdDate DESC");
 $categorie=$sth->fetchAll(PDO::FETCH_ASSOC);
 
+$sth3=$db->query("SELECT * FROM product_category");
+$categories=$sth3->fetchAll(PDO::FETCH_ASSOC);
+
 $sth2=$db->query("SELECT * FROM product WHERE product_categoryID=".$_GET['product_categoryID']." ORDER BY createdDate DESC");
 $all_product=$sth2->fetchAll(PDO::FETCH_ASSOC);
  ?>
@@ -27,15 +30,15 @@ $all_product=$sth2->fetchAll(PDO::FETCH_ASSOC);
 			</div>
 			<div class="wrapper">
 				<ol class="breadcrumb">
-				  <li><a href="../index.php"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+				  <li><a href="product_no_category.php"><i class="fa fa-home" aria-hidden="true"></i></a></li>
 					<?php foreach($categorie as $row){ ?>
 				  <li class="active"><a href="#"><?php echo $row['category']; ?></a></li>
 					<?php } ?>
 				</ol>
 				<ul class="Category">
 
-					<?php foreach($categorie as $row){ ?>
-					<li><a href="product_category.php"><?php echo $row['category']; ?></a></li>
+					<?php foreach($categories as $row){ ?>
+					<li><a href="product_category.php?product_categoryID=<?php echo $row['product_categoryID']; ?>"><?php echo $row['category']; ?></a></li>
 				<?php } ?>
 
 				</ul>

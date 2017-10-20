@@ -1,4 +1,7 @@
 <?php
+session_start();
+print_r($_SESSION['cart']);
+
 require_once('../connection/database.php');
 $sth2=$db->query("SELECT * FROM product WHERE productID=".$_GET['productID']." ORDER BY createdDate DESC");
 $product=$sth2->fetch(PDO::FETCH_ASSOC);
@@ -19,20 +22,28 @@ $product=$sth2->fetch(PDO::FETCH_ASSOC);
 			$('.quantity-button').click(function () {
         // 找到fa-plus就+1,找到fa-minus就-1
         var quantity =1;
-        quantity = $('input[name="Quantity"]').val();
+        quantity = $('input[name="quantity"]').val();
         if($(this).find('i').hasClass('fa-plus')){
           quantity++;
           console.log("加數量="+quantity);
         }else {
-          if(quantity >1)quantity--;
+          if(quantity >1) quantity--;
           // 判斷數量是否大於一才減一
           console.log("減數量="+quantity);
         }
-        $('input[name="Quantity"]').val(quantity);
+        $('input[name="quantity"]').val(quantity);
 			});
 		});
 	</script>
-
+<?php
+  if (isset($_GET['Existed']) && $_GET['Existed'] != null) {
+    if ($_GET['Existed'] == 'true') {
+      echo "<script>alert('此商品已存在購物車，請至我的購物車修改數量。')</script>";
+    }else{
+        echo "<script>alert('成功加入購物車')</script>";
+    }
+  }
+ ?>
 </head>
 <body>
 	<div id="page">
@@ -47,6 +58,8 @@ $product=$sth2->fetch(PDO::FETCH_ASSOC);
 				<ol class="breadcrumb">
 				  <li><a href="../index.php"><i class="fa fa-home" aria-hidden="true"></i></a></li>
 				  <li><a href="#">蛋糕</a></li>
+
+          <form data-toggle="validator" action="add_cart.php" method="post">
 
 				  <li class="active"><?php echo $product['name']; ?></li>
 
@@ -72,13 +85,17 @@ $product=$sth2->fetch(PDO::FETCH_ASSOC);
 										<div class="quantity-button">
 											<i class="fa fa-minus" aria-hidden="true"></i>
 										</div>
-										<input type="text" name="Quantity" value="1">
+										<input type="text" name="quantity" value="1">
 										<div class="quantity-button">
 											<i class="fa fa-plus" aria-hidden="true"></i>
 										</div>
 									</td>
 								</tr>
 								<tr>
+                  <input type="hidden" name="name" value="<?php echo $product['name']; ?>">
+                  <input type="hidden" name="price" value="<?php echo $product['price']; ?>">
+                  <input type="hidden" name="productID" value="<?php echo $product['productID']; ?>">
+                    <input type="hidden" name="quantity" value="<?php echo $product['quantity']; ?>">
 									<td colspan="2"><input type="submit" class="cart" value="加入購物車"></td>
 								</tr>
 							</table>
@@ -87,6 +104,7 @@ $product=$sth2->fetch(PDO::FETCH_ASSOC);
 					<div class="clearboth"></div>
 					<hr>
 					<p>商品說明</p>
+          <?php echo $product['description']; ?>
 				</div>
 			</div>
 		</div>
