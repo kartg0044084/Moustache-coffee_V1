@@ -1,6 +1,6 @@
 <?php
 session_start();
-print_r($_SESSION['cart']);
+ // print_r($_SESSION['cart']);
 
 require_once('../connection/database.php');
 $sth2=$db->query("SELECT * FROM product WHERE productID=".$_GET['productID']." ORDER BY createdDate DESC");
@@ -93,6 +93,7 @@ $product=$sth2->fetch(PDO::FETCH_ASSOC);
 								</tr>
 								<tr>
                   <input type="hidden" name="name" value="<?php echo $product['name']; ?>">
+                  <input type="hidden" name="picture" value="<?php echo $product['picture']; ?>">
                   <input type="hidden" name="price" value="<?php echo $product['price']; ?>">
                   <input type="hidden" name="productID" value="<?php echo $product['productID']; ?>">
                     <input type="hidden" name="quantity" value="<?php echo $product['quantity']; ?>">

@@ -1,3 +1,4 @@
+
 <div id="tool-bar">
   <div class="container">
   <div class="tool">
@@ -7,7 +8,7 @@
     <?php }else{ ?>
     <a href="../member/member_login.php">會員登入</a> 。
     <?php } ?>
-    <a href="#"><i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i></a>
+    <a href="../member/member_login.php"><i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i></a>
   </div>
 </div>
 </div>

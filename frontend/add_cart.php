@@ -2,7 +2,7 @@
 session_start();
 
 $is_existed = "false";
-// 判斷商品是否重複
+// 2判斷商品是否重複
 if(isset($_SESSION['cart']) && $_SESSION['cart'] != null){
   for ($i=0; $i <count($_SESSION['cart']) ; $i++) {
     if ($_POST['productID'] == $_SESSION['cart'][$i]['productID']) {
@@ -12,12 +12,14 @@ if(isset($_SESSION['cart']) && $_SESSION['cart'] != null){
   }
 }
 if($is_existed == "false"){
+  // 將接收的商品資料儲存temp 陣列
   $temp['productID']  = $_POST['productID'];
   $temp['name']  = $_POST['name'];
+  $temp['picture']  = $_POST['picture'];
   $temp['price']  = $_POST['price'];
   $temp['productID']  = $_POST['productID'];
     $temp['quantity']  = $_POST['quantity'];
-  // 將陣列資料加入到session Cart 中
+  // 將陣列資料加入到session cart 中
   $_SESSION['cart'][] = $temp;
   goto_previousPage($is_existed);
 }
