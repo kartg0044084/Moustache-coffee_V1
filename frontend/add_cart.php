@@ -1,3 +1,4 @@
+<!-- 為product_content判斷頁 -->
 <?php
 session_start();
 

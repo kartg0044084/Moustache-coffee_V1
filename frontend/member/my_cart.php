@@ -41,6 +41,7 @@ if(isset($_POST['MM_update']) && $_POST['MM_update'] == "quantityEdit"){
 						<table id="order-tables">
             	<thead>
 								<?php if(isset($_SESSION['cart']) && $_SESSION['cart'] != null){ ?>
+									 <?php $totalprice = 0?>  <!--宣告初始=0 -->
 									<?php for ($i=0; $i <count($_SESSION['cart']) ; $i++) {//有商品在購物車時顯示 ?>
             		<tr>
             			<th width="15%">商品圖片</th>
@@ -63,7 +64,7 @@ if(isset($_POST['MM_update']) && $_POST['MM_update'] == "quantityEdit"){
 										</td>
 	                  <td data-title="單價">$NT <?php echo $_SESSION['cart'][$i]['price']; ?></td>
 	                  <td class="quantity" data-title="數量"><?php echo $_SESSION['cart'][$i]['quantity']; ?></td>
-										<td data-title="小計">$NT <?php echo $_SESSION['cart'][$i]['price'] * $_SESSION['cart'][$i]['quantity']; ?></td>
+										<td data-title="小計">$NT <?php $totalprice = $_SESSION['cart'][$i]['price'] * $_SESSION['cart'][$i]['quantity']; echo $totalprice ?></td>
 	                  <td data-title="更新">
 											<a href="my_cart_edit.php?cartID=<?php echo $i?>" class="btn btn-default update" style=""><i class="fa fa-upload"></i></a>
 										</td>
@@ -73,6 +74,7 @@ if(isset($_POST['MM_update']) && $_POST['MM_update'] == "quantityEdit"){
 	                </tr>
 
 									<tr>
+										<!-- <?php  $totalprice += $totalprice?>上面宣告0+小計$totalprice -->
 									<?php } ?>
 								<?php }else{//未加入商品至購物車顯示 ?>
 										<td colspan="7">
@@ -80,11 +82,11 @@ if(isset($_POST['MM_update']) && $_POST['MM_update'] == "quantityEdit"){
 										</td>
 									<?php } ?>
 									<td colspan="6" style="text-align: right;font-weight:bold;">運費</td>
-									<td style="text-align: left;font-weight:bold;">$NT 150</td>
+									<td style="text-align: left;font-weight:bold;">$NT<?php if ($totalprice>=1000){echo 0;}else {echo 150;} ?></td>
 								</tr>
 								<tr>
 									<td colspan="6" style="text-align: right;font-weight:bold;">總金額</td>
-									<td style="text-align: left;font-weight:bold;">$NT 1000</td>
+									<td style="text-align: left;font-weight:bold;"><?php echo $totalprice?></td>
 								</tr>
 
 									<tr>
