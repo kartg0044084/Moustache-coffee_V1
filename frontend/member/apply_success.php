@@ -1,12 +1,26 @@
 <?php
 require_once('../../connection/database.php');
-  $sql= "INSERT INTO member(account, password, createdDate, phone) VALUES ( :account, :password, :createdDate, :phone)";
-  $sth = $db ->prepare($sql);
-  $sth ->bindParam(":account", $_POST['account'], PDO::PARAM_STR);
-  $sth ->bindParam(":password", $_POST['password'], PDO::PARAM_STR);
-  $sth ->bindParam(":createdDate", $_POST['createdDate'], PDO::PARAM_STR);
-	$sth ->bindParam(":phone", $_POST['phone'], PDO::PARAM_STR);
-  $sth -> execute();
+session_start();
+
+if((!empty($_SESSION['check_word'])) && (!empty($_POST['checkword']))){  //判斷此兩個變數是否為空
+
+     if($_SESSION['check_word'] == $_POST['checkword']){ //判斷此兩個變數是否相同
+
+          $_SESSION['check_word'] = ''; //比對正確後，清空將check_word值
+
+          $sql= "INSERT INTO member(account, password, createdDate, phone) VALUES ( :account, :password, :createdDate, :phone)";
+          $sth = $db ->prepare($sql);
+          $sth ->bindParam(":account", $_POST['account'], PDO::PARAM_STR);
+          $sth ->bindParam(":password", $_POST['password'], PDO::PARAM_STR);
+          $sth ->bindParam(":createdDate", $_POST['createdDate'], PDO::PARAM_STR);
+        	$sth ->bindParam(":phone", $_POST['phone'], PDO::PARAM_STR);
+          $sth -> execute();
+
+     }else{
+         echo '<p> </p><p> </p><a href="login_error.php">Error輸入錯誤，將於一秒後跳轉(按此也可返回)</a>';
+         echo '<meta http-equiv="refresh" content="0; url=login_error.php">';
+     }
+}
  ?>
 <!doctype html>
 <!-- Website ../template by freewebsite../templates.com -->

@@ -1,5 +1,6 @@
 <?php
 require_once('../../connection/database.php');
+  session_start();
  ?>
 <!doctype html>
 <!-- Website ../template by freewebsite../templates.com -->
@@ -10,6 +11,11 @@ require_once('../../connection/database.php');
 	<title>Cake House-會員申請</title>
 	<?php require_once("../template/files2.php"); ?>
 </head>
+<script type="text/javascript">
+  function refresh_code() {
+    document.getElementById('imgcode').src="captcha.php";
+  }
+</script>
 <body>
 	<div id="page">
 		<?php require_once("../template/header2.php"); ?>
@@ -64,10 +70,24 @@ require_once('../../connection/database.php');
 								<div class="help-block with-errors"></div>
 							</div>
 						</div>
+
+            <div class="form-group">
+							<div class="col-sm-2">
+								<label for="phone" class="control-label">驗證碼</label>
+							</div>
+            <div class="form-group">
+              <div class="col-sm-10">
+        <input type="text" class="form-control" id="checkword" name="checkword" size="10" maxlength="10" data-error="請輸入驗證碼" required>
+        <div class="help-block with-errors"></div>
+        <p>請輸入下圖字樣：</p><p><img id="imgcode" src="captcha.php" onclick="refresh_code()" /><br />
+           點擊圖片可以更換驗證碼
+        </p>
+  </div>
+</div>
 						<div class="form-group">
 							<div class="col-sm-12 text-center" style="margin-bottom:10px;">
 								<input type="checkbox" id="Agree" data-error="請勾選我同意會員條款" required>
-        我同意Cake House <a href="about.php?PageID=3" target="_blank">會員條款</a>
+        我同意Cake House <a href="../about.php?pageID=3" target="_blank">會員條款</a>
 							</div>
 						</div>
 						<div class="form-group">

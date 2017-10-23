@@ -11,6 +11,7 @@ require_once('../../connection/database.php');
 	<title>Cake House-會員申請</title>
 	<?php require_once("../template/files2.php"); ?>
 </head>
+
 <body>
 	<div id="page">
 		<?php require_once("../template/header2.php"); ?>
@@ -28,7 +29,7 @@ require_once('../../connection/database.php');
 					<h1>會員登入</h1>
 					<div class="row">
 	          <div class="col-md-12">
-					<form action="login.php" method="post" data-toggle="validator">
+					<form data-toggle="validator" action="login.php" method="post">
 						<div class="form-group">
 							<div class="col-sm-2">
 								<label for="account" class="control-label">帳號</label>

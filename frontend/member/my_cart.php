@@ -75,24 +75,26 @@ if(isset($_POST['MM_update']) && $_POST['MM_update'] == "quantityEdit"){
 
 									<tr>
 										<!-- <?php  $totalprice += $totalprice?>上面宣告0+小計$totalprice -->
+										<td colspan="6" style="text-align: right;font-weight:bold;">運費</td>
+										<td style="text-align: left;font-weight:bold;">$NT<?php if ($totalprice>=1000){echo 0;}else {echo 150;} ?></td>
+									</tr>
+									<tr>
+										<td colspan="6" style="text-align: right;font-weight:bold;">總金額</td>
+										<td style="text-align: left;font-weight:bold;"><?php echo $totalprice?></td>
+									</tr>
+									<tr>
+										<td colspan="7" >
+												<a href="order_confirm.php" class="edit-button cart">我要結帳</a>
+									</tr>
 									<?php } ?>
 								<?php }else{//未加入商品至購物車顯示 ?>
 										<td colspan="7">
 											目前購物車無商品，請<a href="../product_no_category.php">前往賣場</a>選購商品。
 										</td>
 									<?php } ?>
-									<td colspan="6" style="text-align: right;font-weight:bold;">運費</td>
-									<td style="text-align: left;font-weight:bold;">$NT<?php if ($totalprice>=1000){echo 0;}else {echo 150;} ?></td>
-								</tr>
-								<tr>
-									<td colspan="6" style="text-align: right;font-weight:bold;">總金額</td>
-									<td style="text-align: left;font-weight:bold;"><?php echo $totalprice?></td>
-								</tr>
 
-									<tr>
-										<td colspan="7" >
-												<a href="order_confirm.php" class="edit-button cart">我要結帳</a>
-									</tr>
+
+
 
               </tbody>
             </table>
