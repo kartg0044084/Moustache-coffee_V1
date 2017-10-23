@@ -5,9 +5,9 @@
     <?php if(isset($_SESSION['Account'])){ ?>
     <a href="../frontend/member/member_edit.php">會員專區</a> 。 <a href="logout.php">登出</a>
     <?php }else{ ?>
-    <a href="../frontend/member/member_login.php">會員登入</a> 。
+    <a href="../frontend/memberz/member_login.php">會員登入</a> 。
     <?php } ?>
-    <a href="../frontend/member/member_login.php"><i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i></a>
+    <a href="../frontend/member/my_cart.php"><i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i></a>
   </div>
 </div>
 </div>

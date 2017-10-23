@@ -1,4 +1,10 @@
-
+<?php
+session_start();
+require_once('../../connection/database.php');
+$sth=$db->query("SELECT * FROM order_details WHERE order_detailsID='".$_SESSION['order_detailsID']."' ORDER BY createdDate DESC");
+$memberID=$sth->fetchAll(PDO::FETCH_ASSOC);
+// print_r($memberID);
+ ?>
 <!doctype html>
 <!-- Website ../template by freewebsite../templates.com -->
 <html>

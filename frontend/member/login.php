@@ -7,7 +7,8 @@ $sth = $db->query("SELECT * FROM member WHERE Account='".$_POST['account']."' AN
 $member = $sth->fetch(PDO::FETCH_ASSOC);
 
 if($member != NULL){
-  $_SESSION['Account'] = $member['Account'];
+  $_SESSION['account'] = $member['account'];
+  $_SESSION['memberID'] = $member['memberID'];
   header('Location: member_edit.php');
 }else{
   header('Location: login_error.php');

@@ -8,7 +8,7 @@
     <?php }else{ ?>
     <a href="../member/member_login.php">會員登入</a> 。
     <?php } ?>
-    <a href="../member/member_login.php"><i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i></a>
+    <a href="../member/my_cart.php"><i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i></a>
   </div>
 </div>
 </div>
