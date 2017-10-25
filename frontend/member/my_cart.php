@@ -34,12 +34,9 @@ if(isset($_POST['MM_update']) && $_POST['MM_update'] == "quantityEdit"){
 					<li><a href="member_edit.php">會員資料修改</a></li>
 					<li><a href="my_cart.php">我的購物車</a></li>
 					<li><a href="my_orders.php">我的訂單</a></li>
-					<li><a href="cart_All_delate.php">移除所有商品</a></li>
 				</ul>
 				<div id="OrderForm">
 					<h1>我的購物車</h1>
-
-
 
 						<table id="order-tables">
             	<thead>
@@ -85,11 +82,11 @@ if(isset($_POST['MM_update']) && $_POST['MM_update'] == "quantityEdit"){
 										<td colspan="6" style="text-align: right;font-weight:bold;">總金額</td>
 										<td style="text-align: left;font-weight:bold;"><?php echo $totalprice?></td>
 									</tr>
-									<?php } ?>
 									<tr>
 										<td colspan="7" >
 												<a href="order_confirm.php" class="edit-button cart">我要結帳</a>
 									</tr>
+									<?php } ?>
 								<?php }else{//未加入商品至購物車顯示 ?>
 										<td colspan="7">
 											目前購物車無商品，請<a href="../product_no_category.php">前往賣場</a>選購商品。
