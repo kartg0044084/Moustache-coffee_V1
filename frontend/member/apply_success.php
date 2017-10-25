@@ -8,10 +8,11 @@ if((!empty($_SESSION['check_word'])) && (!empty($_POST['checkword']))){  //判�
 
           $_SESSION['check_word'] = ''; //比對正確後，清空將check_word值
 
-          $sql= "INSERT INTO member(account, password, createdDate, phone) VALUES ( :account, :password, :createdDate, :phone)";
+          $sql= "INSERT INTO member(account, password, createdDate, phone, birthday) VALUES ( :account, :password, :createdDate, :phone, :birthday)";
           $sth = $db ->prepare($sql);
           $sth ->bindParam(":account", $_POST['account'], PDO::PARAM_STR);
           $sth ->bindParam(":password", $_POST['password'], PDO::PARAM_STR);
+            $sth ->bindParam(":birthday", $_POST['birthday'], PDO::PARAM_STR);
           $sth ->bindParam(":createdDate", $_POST['createdDate'], PDO::PARAM_STR);
         	$sth ->bindParam(":phone", $_POST['phone'], PDO::PARAM_STR);
           $sth -> execute();

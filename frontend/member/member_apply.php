@@ -61,6 +61,17 @@ require_once('../../connection/database.php');
 								<div class="help-block with-errors"></div>
 							</div>
 						</div>
+
+            <div class="form-group">
+							<div class="col-sm-2">
+								<label for="ConfirmPas" class="control-label">生日</label>
+							</div>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="birthday" name="birthday"  data-match-error="生日不符，請重新輸入">
+								<div class="help-block with-errors"></div>
+							</div>
+						</div>
+
 						<div class="form-group">
 							<div class="col-sm-2">
 								<label for="phone" class="control-label">聯絡電話</label>

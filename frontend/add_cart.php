@@ -19,7 +19,8 @@ if($is_existed == "false"){
   $temp['picture']  = $_POST['picture'];
   $temp['price']  = $_POST['price'];
   $temp['productID']  = $_POST['productID'];
-    $temp['quantity']  = $_POST['quantity'];
+  $temp['quantity']  = $_POST['quantity'];
+  if ($_POST['quantity']<=0)$temp['quantity'] = 1;//如傳來值<=1則自動變為一
   // 將陣列資料加入到session cart 中
   $_SESSION['cart'][] = $temp;
   goto_previousPage($is_existed);

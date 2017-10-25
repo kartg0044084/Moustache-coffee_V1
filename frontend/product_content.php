@@ -1,6 +1,7 @@
 <?php
 session_start();
- // print_r($_SESSION['cart']);
+    //  print_r($_SESSION['cart']);
+    // unset($_SESSION['cart']);
 
 require_once('../connection/database.php');
 $sth2=$db->query("SELECT * FROM product WHERE productID=".$_GET['productID']." ORDER BY createdDate DESC");
@@ -21,7 +22,7 @@ $product=$sth2->fetch(PDO::FETCH_ASSOC);
 		$(function () {
 			$('.quantity-button').click(function () {
         // 找到fa-plus就+1,找到fa-minus就-1
-        var quantity =1;
+        var quantity = 1;
         quantity = $('input[name="quantity"]').val();
         if($(this).find('i').hasClass('fa-plus')){
           quantity++;

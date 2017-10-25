@@ -1,10 +1,10 @@
 <?php
 session_start();
-// print_r($_SESSION['cart']);
+  // print_r($_SESSION['cart']);
 if(isset($_POST['MM_update']) && $_POST['MM_update'] == "quantityEdit"){
 	$id= $_POST['cartID'];//抓取購物車編號
 
-	if ($_POST['quantity']<=0)$_POST['quantity'] = 1;//如傳來值<=1則自動變為一
+	// if ($_POST['quantity']<=0)$_POST['quantity'] = 1;//如傳來值<=1則自動變為一
 	$_SESSION['cart'][$id]['quantity'] = $_POST['quantity'];//接收my_cart_editphp[quantity]更新資訊
 }
 ?>
@@ -76,15 +76,11 @@ if(isset($_POST['MM_update']) && $_POST['MM_update'] == "quantityEdit"){
 									<tr>
 										<!-- <?php  $totalprice += $totalprice?>上面宣告0+小計$totalprice -->
 										<td colspan="6" style="text-align: right;font-weight:bold;">運費</td>
-										<td style="text-align: left;font-weight:bold;">$NT<?php if ($totalprice>=1000){echo 0;}else {echo 150;} ?></td>
+										<td style="text-align: left;font-weight:bold;">$NT<?php if ($totalprice>=1000){ $shipping = 0;}else {$shipping= 150;}  echo $shipping; ?></td>
 									</tr>
 									<tr>
 										<td colspan="6" style="text-align: right;font-weight:bold;">總金額</td>
-										<td style="text-align: left;font-weight:bold;"><?php echo $totalprice?></td>
-									</tr>
-									<tr>
-										<td colspan="7" >
-												<a href="order_confirm.php" class="edit-button cart">我要結帳</a>
+										<td style="text-align: left;font-weight:bold;"><?php echo $totalprice + $shipping; ?></td>
 									</tr>
 									<?php } ?>
 								<?php }else{//未加入商品至購物車顯示 ?>
@@ -93,6 +89,17 @@ if(isset($_POST['MM_update']) && $_POST['MM_update'] == "quantityEdit"){
 										</td>
 									<?php } ?>
 
+									<?php if(isset($_SESSION['cart']) && $_SESSION['cart'] != null){ ?>
+									<tr>
+										<td colspan="7" >
+												<a href="order_confirm.php" class="edit-button cart">我要結帳</a>
+									</tr>
+								<?php }else{//未加入商品至購物車顯示 ?>
+									<tr>
+										<td colspan="7" >
+												<a href="../product_no_category.php" class="edit-button cart">尚未購買商品</a>
+									</tr>
+								<?php } ?>
 
 
 

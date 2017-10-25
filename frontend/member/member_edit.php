@@ -4,6 +4,7 @@ session_start();
 require_once('../../connection/database.php');
 if(isset($_POST['MM_update']) && $_POST['MM_update'] == "UPDATE"){
   $sql= "UPDATE member SET account =:account,
+            birthday = :birthday,
             name = :name,
             phone = :phone,
             address = :address WHERE memberID=:memberID";
@@ -11,6 +12,7 @@ if(isset($_POST['MM_update']) && $_POST['MM_update'] == "UPDATE"){
 
   $sth ->bindParam(":account", $_POST['account'], PDO::PARAM_STR);
   $sth ->bindParam(":name", $_POST['name'], PDO::PARAM_STR);
+  $sth ->bindParam(":birthday", $_POST['birthday'], PDO::PARAM_STR);
   $sth ->bindParam(":phone", $_POST['phone'], PDO::PARAM_INT);
   $sth ->bindParam(":address", $_POST['address'], PDO::PARAM_STR);
   $sth ->bindParam(":memberID", $_POST['memberID'], PDO::PARAM_INT);
@@ -74,7 +76,7 @@ $member=$sth2->fetch(PDO::FETCH_ASSOC);
 								</tr>
 								<tr>
 									<th>生日：</th>
-									<td><input type="text" name="Birthday" value="<?php echo $member['Birthday']; ?>"></td>
+									<td><input type="text" id="birthday" name="birthday" value="<?php echo $member['birthday']; ?>"></td>
 								</tr>
 								<tr>
 									<th>聯絡電話：</th>

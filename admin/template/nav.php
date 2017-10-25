@@ -37,9 +37,20 @@
             <li >
               <a href="../product_category/list.php">產品分類管理</a>
               </li>
-            <li>
-              <a href="#">訂單管理</a>
+
+            <li class="dropdown">
+              <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">訂單管理
+                 <span class="caret"></span></button>
+                  <ul class="dropdown-menu">
+                <li><a href="list.php?status=0">新訂單</a></li>
+                <li><a href="list.php?status=1">已付款</a></li>
+                <li><a href="list.php?status=2">出貨中</a></li>
+                <li><a href="list.php?status=3">已出貨</a></li>
+                <li><a href="list.php?status=4">已送達(交易完成)</a></li>
+                <li><a href="list.php?status=99">取消訂單</a></li>
+              </ul>
             </li>
+
             <li>
               <a href="#">會員管理</a>
             </li>
