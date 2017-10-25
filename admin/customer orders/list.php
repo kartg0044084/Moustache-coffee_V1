@@ -86,7 +86,7 @@ if ($_GET['status'] == 0) {
                   <td><?php echo $row['phone'] ?></td>
                   <td><?php echo $row['address'] ?></td>
                   <td><?php echo $row['totalprice'] ?></td>
-                  <td><?php echo $row['status'] ?></td>
+                  <td><?php echo $status ?></td>
                   <td><a href="edit.php?customer_orderID=<?php echo $row['customer_orderID'];?>">訂單明細</a></td>
                   <td><a href="delete.php?customer_orderID=<?php echo $row['customer_orderID'];?>" onclick="if(!confirm('是否刪除此筆資料？')){return false;};">刪除</a></td>
                 </tr>

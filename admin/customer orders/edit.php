@@ -5,8 +5,7 @@ require_once('../../connection/database.php');
 if(isset($_POST['MM_update']) && $_POST['MM_update'] == "UPDATE"){
   // 此處容易忘記
   $sql= "UPDATE customer_order SET status =:status,
-            updatedDate = :updatedDate,
-            customer_orderID = :customer_orderID, WHERE customer_orderID=:customer_orderID";
+            updatedDate = :updatedDate WHERE customer_orderID =:customer_orderID";
    $sth = $db ->prepare($sql);
 
    $sth ->bindParam(":status", $_POST['status'], PDO::PARAM_INT);
@@ -14,11 +13,12 @@ if(isset($_POST['MM_update']) && $_POST['MM_update'] == "UPDATE"){
    $sth ->bindParam(":customer_orderID", $_POST['customer_orderID'], PDO::PARAM_INT);
    $sth -> execute();
 
-  header('Location: list.php?status='.$_POST['status']);
+    header('Location: list.php?status='.$_POST['status']);
+
  }
 
-$sth=$db->query("SELECT*FROM customer_order WHERE customer_orderID=".$_GET['customer_orderID']);
-$customer_order =$sth->fetch(PDO::FETCH_ASSOC);
+  $sth = $db->query("SELECT * FROM customer_order WHERE customer_orderID=".$_GET['customer_orderID']);
+  $customer_order = $sth->fetch(PDO::FETCH_ASSOC);
  ?>
 <html>
 <head>
@@ -132,7 +132,7 @@ $customer_order =$sth->fetch(PDO::FETCH_ASSOC);
                   <input type="hidden" name="customer_orderID" value="<?php echo $customer_order ['customer_orderID']; ?>">
                   <!-- 隱藏表單 透過 customer_orderID 更新(由上往下跑) 完成更新 -->
                    <input type="hidden" name="MM_update" value="UPDATE"> <!--form表單隱藏欄位-->
-                   <input type="text" name="createdDate" value="<?php echo date('Y-m-d H:i:s'); ?>">
+                   <input type="text" name="updatedDate" value="<?php echo date('Y-m-d H:i:s'); ?>">
                   <button type="submit" class="btn btn-primary">送出</button>
                    <a href="list.php" class="btn btn-primary">返回</a>
                 </div>
