@@ -12,7 +12,7 @@ $to      = "kartg0044084@gmail.com";
   		$body   .= "<table>
                     <tr><td>公司名稱:</td><td>Moustache coffee</td></tr>
                     <tr><td>聯絡人:</td><td>".$_POST['name']."</td></tr>
-                    <tr><td>聯絡電話:</td><td>".$_POST['phome']."</td></tr>
+                    <tr><td>聯絡電話:</td><td>".$_POST['phone']."</td></tr>
                     <tr><td>E-mail:</td><td>".$_POST['email']."</td></tr>
                     <tr><td>詢問內容:</td><td>".$_POST['content']."</td></tr>
 										<tr><td>時間:</td><td>".$_POST['createdDate']."</td></tr>
