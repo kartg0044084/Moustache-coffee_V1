@@ -22,6 +22,13 @@ $to      = "kartg0044084@gmail.com";
   		mail($to, $subject, $body, $header);
 }
  ?>
+ <script>
+ $(function(){
+	 $('#submit').click(function(){
+		 alert("感謝你的寶貴意見");
+	 });
+ });
+ </script>
 <!doctype html>
 <!-- Website template by freewebsitetemplates.com -->
 <html>
