@@ -17,11 +17,32 @@ if((!empty($_SESSION['check_word'])) && (!empty($_POST['checkword']))){  //判�
         	$sth ->bindParam(":phone", $_POST['phone'], PDO::PARAM_STR);
           $sth -> execute();
 
+          $to      = "kartg0044084@gmail.com";
+
+            		$header  = 'Content-type: text/html; charset=iso-8859-1'."\r\n";
+            		$header .= "From: kartg0044084@gmail.com";
+
+            		$subject = "[Moustache coffee] 客戶意見";
+            		$body    = "您有一封來自 ".$company." 公司的客戶意見,<br><br>";
+            		$body   .= "恭喜加入Moustache coffee，請至<a href:'http://120.124.165.116/c/no05/Moustache-coffee_V1/frontend/member/member_login.php'>按我</a><br>";
+            		$body   .= "<table>
+                              <tr><td>公司名稱:</td><td>".$company."</td></tr>
+                              <tr><td>聯絡人:</td><td>".$name."</td></tr>
+                              <tr><td>聯絡電話:</td><td>".$phone."</td></tr>
+                              <tr><td>E-mail:</td><td>".$email."</td></tr>
+                              <tr><td>詢問內容:</td><td>".$content."</td></tr>
+                              </table><br>";
+            		$body   .= "請您盡快與客戶聯繫";
+
+            		mail($to, $subject, $body, $header);
+
      }else{
          echo '<p> </p><p> </p><a href="login_error.php">Error輸入錯誤，將於一秒後跳轉(按此也可返回)</a>';
          echo '<meta http-equiv="refresh" content="0; url=login_error.php">';
      }
 }
+
+
  ?>
 <!doctype html>
 <!-- Website ../template by freewebsite../templates.com -->
