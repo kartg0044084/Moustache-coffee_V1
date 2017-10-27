@@ -5,6 +5,7 @@ if (isset($_POST['MM_login']) && $_POST['MM_login'] == 'LOGIN') {
 	$sth = $db->query("SELECT * FROM users WHERE account='".$_POST['account']."' AND password='".$_POST['password']."'");
 	$user = $sth->fetch(PDO::FETCH_ASSOC);
 	$has_user = count($user);
+	// php count 統計陣列
 	if (isset($user) && $user != null){
 		$_SESSION['account'] = $user['account'];
 		header('Location: news/list.php');
